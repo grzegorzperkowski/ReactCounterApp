@@ -13,8 +13,13 @@ class App extends Component {
     ]
   };
 
+  componentWillUpdate(nextProps, nextState) {
+    console.log(nextProps, nextState);
+  }
+
   handleIncrement = counter => {
     counter.value++;
+    console.log("increment");
     this.setState({ counter });
   };
 
@@ -34,7 +39,14 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar />
+        <NavBar
+          totalCounters={
+            this.state.counters.filter(c => {
+              console.log("update total numberes");
+              return c.value > 0;
+            }).length
+          }
+        />
         <main className="container">
           <Counters
             counters={this.state.counters}
