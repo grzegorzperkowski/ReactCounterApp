@@ -6,21 +6,27 @@ import Counters from "./components/counters";
 class App extends Component {
   state = {
     counters: [
-      { id: 1, value: 4 },
+      { id: 1, value: 1 },
       { id: 2, value: 0 },
       { id: 3, value: 0 },
       { id: 4, value: 0 }
     ]
   };
 
-  componentWillUpdate(nextProps, nextState) {
-    console.log(nextProps, nextState);
-  }
-
   handleIncrement = counter => {
-    counter.value++;
-    console.log("increment");
-    this.setState({ counter });
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value++;
+    this.setState({ counters });
+  };
+
+  handleDecrement = counter => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value--;
+    this.setState({ counters });
   };
 
   handleReset = () => {
@@ -40,12 +46,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <NavBar
-          totalCounters={
-            this.state.counters.filter(c => {
-              console.log("update total numberes");
-              return c.value > 0;
-            }).length
-          }
+          totalCounters={this.state.counters.filter(c => c.value > 0).length}
         />
         <main className="container">
           <Counters
@@ -53,6 +54,7 @@ class App extends Component {
             onReset={this.handleReset}
             onDelete={this.handleDelete}
             onIncrement={this.handleIncrement}
+            onDecrement={this.handleDecrement}
           />
         </main>
       </React.Fragment>
