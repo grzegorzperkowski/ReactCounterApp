@@ -5,14 +5,18 @@ class Counters extends Component {
     const {
       onReset,
       onDelete,
+      onAdd,
       onIncrement,
       onDecrement,
       counters
     } = this.props;
     return (
-      <div>
+      <React.Fragment>
         <button onClick={onReset} className="btn btn-primary btn-sm m-2">
           Reset
+        </button>
+        <button onClick={onAdd} className="btn-primary btn-sm m-5">
+          Add new
         </button>
 
         {counters.map(counter => (
@@ -24,7 +28,7 @@ class Counters extends Component {
             counter={counter}
           />
         ))}
-      </div>
+      </React.Fragment>
     );
   }
 }
