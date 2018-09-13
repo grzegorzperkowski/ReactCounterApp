@@ -18,16 +18,17 @@ class Counters extends Component {
         <button onClick={onAdd} className="btn-primary btn-sm m-5">
           Add new
         </button>
-
-        {counters.map(counter => (
-          <Counter
-            key={counter.id}
-            onDelete={onDelete}
-            onIncrement={onIncrement}
-            onDecrement={onDecrement}
-            counter={counter}
-          />
-        ))}
+        <div className="card">
+          {counters.map(counter => (
+            <Counter
+              key={counter.id}
+              onDelete={onDelete}
+              onIncrement={onIncrement}
+              onDecrement={onDecrement}
+              counter={counter}
+            />
+          ))}
+        </div>
       </React.Fragment>
     );
   }

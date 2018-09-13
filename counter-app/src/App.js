@@ -13,7 +13,10 @@ class App extends Component {
 
   getInitCounters() {
     const id = 1;
-    return [{ id, value: 1, name: things[id] }];
+    return [
+      { id, value: 1, name: things[id] },
+      { id: id + 1, value: 1, name: things[id + 1] }
+    ];
   }
 
   componentDidMount() {
@@ -65,7 +68,7 @@ class App extends Component {
         <NavBar
           totalCounters={this.state.counters.filter(c => c.value > 0).length}
         />
-        <main className="container">
+        <main>
           <Counters
             counters={this.state.counters}
             onReset={this.handleReset}
