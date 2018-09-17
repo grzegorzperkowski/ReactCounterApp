@@ -49,7 +49,6 @@ class Counter extends Component {
   }
 
   formatCount() {
-    console.log("formatCount", this.props.counter);
     return this.props.counter.value === 0 ? "Zero" : this.props.counter.value;
   }
 

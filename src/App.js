@@ -49,12 +49,20 @@ class App extends Component {
   };
 
   handleAdd = () => {
-    const id = Math.max(this.state.counters.length) + 1;
-    const counters = [
-      ...this.state.counters,
-      { id, value: 1, name: this.state.Things[id] }
-    ];
-    this.setState({ counters });
+    do {
+      const newIndex = Math.floor(this.state.Things.length * Math.random());
+
+      const newName = this.state.Things[newIndex];
+
+      if (typeof this.state.counters.find(x => x.id === newIndex) === undefined)
+        continue;
+
+      const newCounters = [...this.state.counters];
+      newCounters.push({ id: newIndex, value: 1, name: newName });
+
+      this.setState({ counters: newCounters });
+      break;
+    } while (true);
   };
 
   handleDelete = counterId => {
