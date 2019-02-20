@@ -8,7 +8,8 @@ class Counters extends Component {
       onAdd,
       onIncrement,
       onDecrement,
-      counters
+      counters,
+      onRename
     } = this.props;
     return (
       <React.Fragment>
@@ -26,6 +27,7 @@ class Counters extends Component {
               onIncrement={onIncrement}
               onDecrement={onDecrement}
               counter={counter}
+              onRename={onRename}
             />
           ))}
         </div>

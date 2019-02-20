@@ -10,9 +10,12 @@ class Counter extends Component {
         {/* <span className={this.getItemNameClasses()} style={{ width: 120 }}>
           {this.props.counter.name}
         </span> */}
-
-        <EditableLabel name={this.props.counter.name} width={120} />
-
+        <EditableLabel
+          id={this.props.counter.id}
+          onRename={this.props.onRename}
+          name={this.props.counter.name}
+          width={120}
+        />
         <span className={this.getCountClasses()} style={{ width: 50 }}>
           {this.formatCount()}
         </span>

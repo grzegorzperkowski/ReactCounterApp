@@ -43,6 +43,17 @@ class App extends Component {
     this.setState({ counters });
   };
 
+  handleRename = (oldName, newName, id) => {
+    console.log(oldName, newName, id);
+    const counters = this.state.counters.map(e => {
+      if (e.id === id) return { ...e, name: newName };
+
+      return { ...e };
+    });
+
+    this.setState({ counters });
+  };
+
   handleReset = () => {
     const counters = this.getInitCounters();
     this.setState({ counters });
@@ -84,6 +95,7 @@ class App extends Component {
             onIncrement={this.handleIncrement}
             onDecrement={this.handleDecrement}
             onAdd={this.handleAdd}
+            onRename={this.handleRename}
           />
         </main>
       </React.Fragment>
