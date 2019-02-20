@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import EditableLabel from "./editableLabel";
 
 class Counter extends Component {
   render() {
@@ -6,9 +7,11 @@ class Counter extends Component {
 
     return (
       <div style={{ width: "100%" }}>
-        <span className={this.getItemNameClasses()} style={{ width: 120 }}>
+        {/* <span className={this.getItemNameClasses()} style={{ width: 120 }}>
           {this.props.counter.name}
-        </span>
+        </span> */}
+
+        <EditableLabel name={this.props.counter.name} width={120} />
 
         <span className={this.getCountClasses()} style={{ width: 50 }}>
           {this.formatCount()}
